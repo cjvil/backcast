@@ -4,13 +4,13 @@ var SearchView = Backbone.View.extend({
   },
 
   events: {
-    'click button': 'handleClick',
+    'click .btn': 'handleClick',
     'keyup input': 'handleEnter'
   },
 
   handleClick: function(event) {
     var query = this.$('.form-control').val();
-    this.collection.search(query);
+    this.collection.search(query, this.autoplay);
   },
 
   handleEnter: function(event) {
@@ -20,7 +20,7 @@ var SearchView = Backbone.View.extend({
     //   this.collection.search(query);
     // }
     var query = this.$('.form-control').val();
-    this.collection.search(query);
+    this.collection.search(query, this.autoplay);
 
   },
 

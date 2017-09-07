@@ -3,6 +3,7 @@ var VideoListView = Backbone.View.extend({
   initialize: function () {
     //only for passing mocha tests.
     this.collection.on('sync', this.render, this);
+
   },
 
   render: function() {

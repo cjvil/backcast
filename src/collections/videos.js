@@ -1,7 +1,8 @@
 var Videos = Backbone.Collection.extend({
 
   model: Video,
-  search: _.debounce(function (query) {
+  search: _.debounce(function (query, number) {
+    number ? '1' : '0';  
     Backbone.ajax({
       url: 'https://www.googleapis.com/youtube/v3/search',
       type: 'GET',
@@ -11,7 +12,8 @@ var Videos = Backbone.Collection.extend({
         'part': 'snippet',
         'q': query,
         'type': 'video',
-        'videoEmbeddable': 'true'},
+        'videoEmbeddable': 'true',
+        'autoplay': number},
       success: data => {
         console.log('youtube: Got the Data', data);
         this.reset(this.parse(data));

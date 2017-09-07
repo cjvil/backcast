@@ -21,6 +21,21 @@ var VideoPlayerView = Backbone.View.extend({
     return this;
   },
 
+  events: {
+    'click .autoplaybtn': 'handleClick',
+  },
+
+  handleClick: function () {
+    var autoplay = this.$('#autoplay').text();
+    if (autoplay === 'ON') {
+      this.model.set('autoplay', 0);
+      this.$('#autoplay').text('OFF');
+    } else {
+      this.model.set('autoplay', 1);
+      this.$('#autoplay').text('ON');
+    }
+  },
+
   template: templateURL('src/templates/videoPlayer.html')
 
 });
