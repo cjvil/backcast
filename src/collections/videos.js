@@ -14,7 +14,7 @@ var Videos = Backbone.Collection.extend({
         'videoEmbeddable': 'true'},
       success: data => {
         console.log('youtube: Got the Data', data);
-        return this.parse(data);
+        this.reset(this.parse(data));
       },
       error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error

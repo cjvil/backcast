@@ -1,8 +1,19 @@
 var SearchView = Backbone.View.extend({
 
   initialize: function () {
-    //this.on('all', () => console.log(this), this);
   },
+
+  events: {
+    'click .btn': 'handleClick'
+  },
+
+  handleClick: function(event) {
+    var query = this.$('.form-control').val();
+   // var videos = new Video();
+    console.log(this.collection.search(query));
+  },
+
+
   render: function() {
     this.$el.html(this.template());
     return this;
