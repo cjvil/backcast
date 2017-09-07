@@ -32,7 +32,7 @@ describe('AppView', function() {
     expect(VideoListView.prototype.render).to.have.callCount(1);
   });
 
-  xdescribe('when rendering live data from YouTube', function() {
+  describe('when rendering live data from YouTube', function() {
 
     it('should render a Search view', function() {
       expect(SearchView.prototype.render).to.have.callCount(1);

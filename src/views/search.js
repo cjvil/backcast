@@ -4,13 +4,20 @@ var SearchView = Backbone.View.extend({
   },
 
   events: {
-    'click .btn': 'handleClick'
+    'click button': 'handleClick',
+    'keyup input': 'handleEnter'
   },
 
   handleClick: function(event) {
     var query = this.$('.form-control').val();
-   // var videos = new Video();
-    console.log(this.collection.search(query));
+    this.collection.search(query);
+  },
+
+  handleEnter: function(event) {
+    if (event.keyCode === 13) {
+      var query = this.$('.form-control').val();
+      this.collection.search(query);
+    }
   },
 
 
