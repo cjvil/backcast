@@ -1,15 +1,16 @@
 var VideoPlayerView = Backbone.View.extend({
 
   initialize: function() {
-    this.collection.on('select', this.render, this);
-    
     //for mocha tests
     this.collection.on('sync', this.render, this);
+   
+    this.collection.on('select', this.render, this);
+    this.collection.on('reset', () => { this.render(); }, this);
+    
   },
 
-  render: function() {
-    this.model = this.collection.models[0];
-    
+  render: function(event) {
+    this.model = event || this.collection.models[0];
     if (!this.model) {
       this.$el.html(this.template());
     } else {
@@ -24,7 +25,8 @@ var VideoPlayerView = Backbone.View.extend({
   events: {
     'click .autoplaybtn': 'handleClick',
   },
-
+  
+  
   handleClick: function () {
     var autoplay = this.$('#autoplay').text();
     if (autoplay === 'ON') {
