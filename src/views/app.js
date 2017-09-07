@@ -5,9 +5,6 @@ var AppView = Backbone.View.extend({
   initialize: function() {
     this.videos = new Videos(window.exampleVideoData);
 
-    //console.log(this.event);
-
-
     this.render();
     var videoplayerview = new VideoPlayerView({el: $('.player'), collection: this.videos, event: this.event});
     videoplayerview.render();
