@@ -14,10 +14,14 @@ var SearchView = Backbone.View.extend({
   },
 
   handleEnter: function(event) {
-    if (event.keyCode === 13) {
-      var query = this.$('.form-control').val();
-      this.collection.search(query);
-    }
+   // console.log(event);
+    // if (event.keyCode === 13) {
+    //   var query = this.$('.form-control').val();
+    //   this.collection.search(query);
+    // }
+    var query = this.$('.form-control').val();
+    this.collection.search(query);
+
   },
 
 

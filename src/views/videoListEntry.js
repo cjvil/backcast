@@ -1,6 +1,7 @@
 var VideoListEntryView = Backbone.View.extend({
 
   initialize: function() {
+    //for mocha tests
     this.model.on('sync', this.render, this);
   },
 

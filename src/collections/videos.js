@@ -1,7 +1,7 @@
 var Videos = Backbone.Collection.extend({
 
   model: Video,
-  search: function (query) {
+  search: _.debounce(function (query) {
     Backbone.ajax({
       url: 'https://www.googleapis.com/youtube/v3/search',
       type: 'GET',
@@ -20,8 +20,8 @@ var Videos = Backbone.Collection.extend({
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
         console.error('youtube: Failed to get data', data);
       }
-    });  
-  },
+    });
+  }, 500),  
   parse: function(data) {
     return data.items;
   }
