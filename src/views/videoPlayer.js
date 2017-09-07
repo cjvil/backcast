@@ -3,11 +3,14 @@ var VideoPlayerView = Backbone.View.extend({
   initialize: function() {
     this.model = this.collection.models[0];
     this.collection.on('select', this.render, this);
-    console.log(this.collection);
   },
 
   render: function() {
-    this.$el.html(this.template(this.model.attributes));
+    if (!this.model) {
+      this.$el.html(this.template());
+    } else {
+      this.$el.html(this.template(this.model.attributes));
+    }
     return this;
   },
 
